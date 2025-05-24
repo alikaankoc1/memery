@@ -1,0 +1,294 @@
+/* Temel stil */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.hidden {
+  display: none;
+}
+
+/* Ortala ekran */
+.centered-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  /* padding-top: 10px; */
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Başlık */
+h1,
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Giriş ekranı input ve buton */
+#player-name {
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 15px;
+  width: 200px;
+  max-width: 80vw;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Skor bölümü */
+.scoreboard {
+  font-size: 1.3rem;
+  margin: 15px 0;
+}
+
+/* Oyun kartları grid */
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(4, 70px); /* 4 sütun */
+  grid-template-rows: repeat(4, 70px); /* 4 satır */
+  gap: 15px;
+  justify-content: center;
+  max-width: 320px; /* 4x70 + 3x15 = 320px civarı */
+  margin: 0 auto;
+}
+
+.card {
+  width: 70px;
+  height: 70px;
+  background-color: #3498db;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  /* Dönüş animasyon süresini 0.6s yaparak yavaşlatıyoruz */
+  transition: transform 0.9s ease, background-color 0.3s ease;
+}
+
+.card.flipped {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  transform: rotateY(180deg);
+}
+
+.card.matched {
+  background-color: #2ecc71;
+  cursor: default;
+  box-shadow: 0 0 10px #27ae60;
+}
+/* oyun amaç */
+.game-description {
+  font-size: 1rem;
+  color: #bdc3c7; /* Açık gri, tema ile uyumlu */
+  max-width: 300px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+/* oyun sonu skor yazma */
+.final-score-text {
+  font-size: 1.3rem;
+  margin: 15px 0;
+  color: #f1c40f; /* Altın sarısı skor vurgusu */
+}
+
+/* Durum yazısı */
+#status {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+.timer-display {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #3498db;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  user-select: none;
+  z-index: 9999;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+/* Küçük ekranlar için (örneğin max 600px genişlik) */
+@media (max-width: 600px) {
+  .timer-display {
+    top: 5px;
+    right: 5px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+  }
+}
+
+/* Çok küçük ekranlar için (örneğin max 350px genişlik) */
+@media (max-width: 350px) {
+  .timer-display {
+    top: 3px;
+    right: 3px;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+  }
+}
+
+.timeout-message {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #ffe0e0;
+  color: #c0392b;
+  border: 2px solid #c0392b;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in;
+}
+
+.timeout-message button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.timeout-message button:hover {
+  background-color: #c0392b;
+}
+
+#timeout-message {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  text-align: center;
+}
+#retry-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#retry-btn:hover {
+  background-color: #c0392b;
+}
+
+.level-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.level-btn {
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 180px;
+  max-width: 80vw;
+  font-family: inherit; /* Mevcut yazı tipini koru */
+  user-select: none;
+}
+
+.level-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Seviye seçimi ekranı için başlık */
+.level-selection h2 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #ecf0f1;
+  font-family: inherit;
+}
+@media (min-width: 600px) {
+  .level-selection {
+    flex-direction: row; /* Geniş ekranlarda yatay sıralama */
+    justify-content: center;
+  }
+  .level-btn {
+    width: 140px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive ayar - küçük ekranlarda kartlar büyür */
+@media (max-width: 480px) {
+  .card {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  #player-name {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-description {
+    max-width: 90vw;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .final-score-text {
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hafıza Kart Eşleştirme Oyunu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="login-screen" class="centered-screen">
+    <h1>🧠 Hafıza Kart Eşleştirme Oyunu</h1>
+    <h2>Kullanıcı Adı Giriniz</h2>
+    <p class="game-description">
+      🎯 Amaç: Tüm kartları eşleştirmek!<br />
+      ✅ Doğru eşleşmede 10 puan kazanırsınız.<br />
+      ❌ Yanlış eşleşmede 2 puan kaybedersiniz.
+    </p>
+    <input type="text" id="player-name" placeholder="Adınızı yazın..." />
+    <button id="start-btn">Oyunu Başlat</button>
+  </div>
+  <!-- Seviye seçimi ekranı (başlangıçta gizli) -->
+  <div id="level-screen" class="hidden level-selection">
+    <h2>🎯 Seviye Seçiniz</h2>
+    <button class="level-btn" data-level="easy">Kolay (12 kart)</button>
+    <button class="level-btn" data-level="medium">Orta (16 kart)</button>
+    <button class="level-btn" data-level="hard">Zor (20 kart)</button>
+  </div>
+
+  <div id="game-screen" class="hidden">
+    <h1>🧠 Hafıza Kart Eşleştirme Oyunu</h1>
+    <p id="welcome-msg"></p>
+    <div class="scoreboard">
+      <span>Skor: <span id="score">0</span></span>
+    </div>
+    <div id="timer" class="timer-display">60</div>
+
+    <div class="game-container" id="game-board"></div>
+    <p id="status">Eşleşmeleri bul!</p>
+    <div id="timeout-message" class="hidden ">
+      <p>❌ Süre doldu! Kazanamadınız. 😢</p>
+      <button id="retry-btn">🔄 Tekrar Dene</button>
+    </div>
+
+  </div>
+
+  <div id="congrats-screen" class="hidden centered-screen">
+    <!-- <div id="timeup-screen" class="hidden centered-screen">
+            <h2>⏰ Süre doldu!</h2>
+            <p id="timeup-score" class="final-score-text"></p>
+            <button id="timeup-restart-btn">Tekrar Oyna</button>
+        </div> -->
+    <h2>🎉 Tebrikler, <span id="winner-name"></span>! Tüm kartları eşleştirdiniz! 🎉</h2>
+    <p id="final-score" class="final-score-text"></p>
+
+    <button id="restart-btn">Tekrar Oyna</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
